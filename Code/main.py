@@ -1,6 +1,7 @@
 from transformers import pipeline
 
-classifier = pipeline("sentiment-analysis")
-result = classifier("I've been waiting for a HuggingFace course my whole life.")
+classifier = pipeline("zero-shot-classification")
+result = classifier("Keir Starmer is the PM in the UK",
+                candidate_labels=["education", "politics", "business"])
 
 print(result)
