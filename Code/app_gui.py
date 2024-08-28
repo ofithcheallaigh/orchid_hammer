@@ -2,6 +2,11 @@ import tkinter as tk
 from tkinter import scrolledtext
 from transformers import pipeline
 
+"""
+if there are torch issues, pip install torch==2.3.0 torchvision transformers seems to work,
+after uninstalling torch
+"""
+
 # text = """America has changed dramatically during recent years. Not only has the number of 
 #         graduates in traditional engineering disciplines such as mechanical, civil, 
 #         electrical, chemical, and aeronautical engineering declined, but in most of 
@@ -23,10 +28,9 @@ from transformers import pipeline
 
 # Assuming summerise_this is defined elsewhere in your code
 def summerise_this(text):
-    # Example implementation of the summerise_this function
-    # Replace this with the actual implementation
-    summarizer = pipeline("summarization")
-    result = summarizer(text)
+    # BERT model pre-trained on English langaue and fine tuned on CNN/Daily Mail articles
+    summarizer = pipeline("summarization", model="facebook/bart-large-cnn") 
+    result = summarizer(text,max_length=130, min_length=30, do_sample=False)
     # result = "This is a summary of: " + text
     return result
 
@@ -38,7 +42,7 @@ def on_summerise_click():
 
 # Create the main application window
 root = tk.Tk()
-root.title("Sumer Text Summariser")
+root.title("Orchid Hammer") # GUI window name
 
 # Configure the grid layout
 root.grid_rowconfigure(0, weight=1)
