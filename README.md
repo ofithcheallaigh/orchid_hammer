@@ -1,8 +1,10 @@
 # Introduction
+## Updates
 
 **Update 4: 28 August 2024**
 - Initial GUI developed, which will take text and summerise it. Text can be placed in a text box within the GUI.
 - Some tests showed the on smaller amounts of text, the summerisation was essentially just a repeat of the text provided -- this needs inbestigated
+- Update the summerisation pipleline to `summarizer = pipeline("summarization", model="facebook/bart-large-cnn")`, this is an English-language dataset containing just over 300k unique news articles as written by journalists at CNN and the Daily Mail
 
 **Update 3: 20 August 2024**
 - Updated information and code related to the zero-shot classification.
