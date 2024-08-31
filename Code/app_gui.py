@@ -37,27 +37,45 @@ class SummarizerApp:
             messagebox.showwarning("Input Error", "Please enter some text to summarize.")
             return
 
-        self.summarize_button.config(state=tk.DISABLED) # Disable the button to prevent multiple clicks
-        threading.Thread(target=self.summarize_text, args=(input_text,)).start() # Run the summarization in a separate thread
+        # Disable the button to prevent multiple clicks
+        self.summarize_button.config(state=tk.DISABLED)
+        # Run the summarization in a separate thread
+        threading.Thread(target=self.summarize_text, args=(input_text,)).start()
 
     def summarize_text(self, text):
         try:
             chunks = self.split_text_into_chunks(text, max_length=1024)
-            summaries = [self.summarizer(chunks, max_length=130, min_length=30, do_sample=False)[0]['summary_text'] for chunk in chunks]
+            summaries = []
+            for i, chunk in enumerate(chunks):
+                try:
+                    print(f"Processing chunk {i+1}/{len(chunks)}: {chunk[:50]}...")  # Debugging statement
+                    result = self.summarizer(chunk, max_length=130, min_length=30, do_sample=False)
+                    print(f"Result for chunk {i+1}: {result}")  # Debugging statement
+                    if result and len(result) > 0:
+                        summaries.append(result[0]['summary_text'])
+                    else:
+                        messagebox.showwarning("Summarization Error", f"No summary could be generated from chunk {i+1}.")
+                except Exception as e:
+                    print(f"Error processing chunk {i+1}: {e}")  # Debugging statement
+                    messagebox.showerror("Summarization Error", f"Error processing chunk {i+1}: {e}")
             summary = " ".join(summaries)
             self.output_text.delete("1.0", tk.END)
             self.output_text.insert(tk.END, summary)
         except Exception as e:
             messagebox.showerror("Error", str(e))
         finally:
-            self.summarize_button.config(state=tk.NORMAL) # Reenable the button after summerisation finished
+            self.summarize_button.config(state=tk.NORMAL)  # Re-enable the button after summarization is finished
 
     def split_text_into_chunks(self, text, max_length=1024):
         tokens = self.tokenizer.encode(text)
         chunks = []
         for i in range(0, len(tokens), max_length):
-            chunk = tokens[i:i+max_length]
-            chunks.append(self.tokenizer.decode(chunk))
+            chunk = tokens[i:i + max_length]
+            decoded_chunk = self.tokenizer.decode(chunk)
+            print(f"Chunk {len(chunks)+1} length: {len(chunk)} tokens")  # Debugging statement
+            print(f"Chunk {len(chunks)+1} content: {decoded_chunk[:50]}...")  # Debugging statement
+            chunks.append(decoded_chunk)
+        print(f"Total chunks created: {len(chunks)}")  # Debugging statement
         return chunks
 
 if __name__ == "__main__":
