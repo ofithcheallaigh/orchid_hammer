@@ -1,6 +1,10 @@
 # Introduction
 ## Updates
 
+**Update 5: 31 August 2024**
+- Updated GUI to use threading to try and stop it freezing
+- Found and issue where too much text can be added to the GUI, this causes an error. I have added an issue to the project to investigate this (Issue #2).
+
 **Update 4: 28 August 2024**
 - Initial GUI developed, which will take text and summerise it. Text can be placed in a text box within the GUI.
 - Some tests showed the on smaller amounts of text, the summerisation was essentially just a repeat of the text provided -- this needs inbestigated
