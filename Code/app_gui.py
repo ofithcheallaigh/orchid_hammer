@@ -49,7 +49,13 @@ class SummarizerApp:
             for i, chunk in enumerate(chunks):
                 try:
                     print(f"Processing chunk {i+1}/{len(chunks)}: {chunk[:50]}...")  # Debugging statement
-                    result = self.summarizer(chunk, max_length=130, min_length=30, do_sample=False)
+                    # Adjust max_length based on the input length
+                    input_length = len(self.tokenizer.encode(chunk))
+                    max_length = min(130, input_length - 1)
+                    if input_length < 30:  # Skip very short chunks
+                        print(f"Skipping chunk {i+1} due to short length: {input_length} tokens")
+                        continue
+                    result = self.summarizer(chunk, max_length=max_length, min_length=30, do_sample=False)
                     print(f"Result for chunk {i+1}: {result}")  # Debugging statement
                     if result and len(result) > 0:
                         summaries.append(result[0]['summary_text'])
