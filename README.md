@@ -1,6 +1,9 @@
 # Introduction
 ## Updates
 
+**Update 6: 2 September 2024**
+- Running 750 words into the app did produce an output, but also a lot of errors. This is done on the fix-text-size-issue branch
+
 **Update 5: 31 August 2024**
 - Updated GUI to use threading to try and stop it freezing
 - Found and issue where too much text can be added to the GUI, this causes an error. I have added an issue to the project to investigate this (Issue [#2](https://github.com/ofithcheallaigh/orchid_hammer/issues/2)).
