@@ -44,14 +44,14 @@ class SummarizerApp:
 
     def summarize_text(self, text):
         try:
-            chunks = self.split_text_into_chunks(text, max_length=1024)
+            chunks = self.split_text_into_chunks(text, max_length=150)
             summaries = []
             for i, chunk in enumerate(chunks):
                 try:
                     print(f"Processing chunk {i+1}/{len(chunks)}: {chunk[:50]}...")  # Debugging statement
                     # Adjust max_length based on the input length
                     input_length = len(self.tokenizer.encode(chunk))
-                    max_length = min(130, input_length - 1)
+                    max_length = min(40, input_length - 1)
                     if input_length < 30:  # Skip very short chunks
                         print(f"Skipping chunk {i+1} due to short length: {input_length} tokens")
                         continue
