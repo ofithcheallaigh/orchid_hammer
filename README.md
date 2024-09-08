@@ -1,7 +1,7 @@
 # Introduction
 ## Updates
 
-**UPdate 8: 8 September 2024**
+**Update 8: 8 September 2024**
 - Adding a Jupyter notebook which is nonsense, and I will delete this at some clean up stage
 - I changed the chunk sizes in the GUI (man, 150, min 40) to better handle the text - seems to work, but summerisation is slow. Maybe move to the cloud?
 - Added an info file related to the tken for logging into HF -- this will probably be deleted soon too.
