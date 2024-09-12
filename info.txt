@@ -1,4 +1,0 @@
-Token is valid (permission: fineGrained).
-Your token has been saved in your configured git credential helpers (manager).
-Your token has been saved to C:\Users\B00830189\.cache\huggingface\token
-Login successful
