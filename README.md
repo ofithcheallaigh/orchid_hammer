@@ -4,7 +4,8 @@
 **Update 9: 12 September 2024**
 - Added requirements file which can be used to install `tkinter` and `transformers`.    
 - Added Wiki page with small section on how to install packages from the requirements file.     
-- Added info.txt to .gitignore
+- Added info.txt to .gitignore.     
+- Added section to `Common Git Commands` in tge Wiki on how to pull the latest changes from the remote.   
 
 **Update 8: 8 September 2024**
 - Adding a Jupyter notebook which is nonsense, and I will delete this at some clean up stage
