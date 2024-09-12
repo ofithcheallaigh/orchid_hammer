@@ -1,6 +1,10 @@
 # Introduction
 ## Updates
 
+**Update 9: 12 September 2024**
+- Added requirements file which can be used to install `tkinter` and `transformers`.    
+- Added Wiki page with small section on how to install packages from the requirements file.     
+
 **Update 8: 8 September 2024**
 - Adding a Jupyter notebook which is nonsense, and I will delete this at some clean up stage
 - I changed the chunk sizes in the GUI (man, 150, min 40) to better handle the text - seems to work, but summerisation is slow. Maybe move to the cloud?
