@@ -1,6 +1,9 @@
 # Introduction
 ## Updates
 
+**Update 10: 5 October 2024**
+- Removed `tkinter from the requirements file; 'tkinter' is native to Python
+
 **Update 9: 12 September 2024**
 - Added requirements file which can be used to install `tkinter` and `transformers`.    
 - Added Wiki page with small section on how to install packages from the requirements file.     
