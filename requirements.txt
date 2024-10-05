@@ -1,2 +1,1 @@
-tkinter==8.6
 transformers==4.44.2
